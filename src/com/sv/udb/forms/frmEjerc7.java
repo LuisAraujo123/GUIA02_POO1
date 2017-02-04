@@ -9,7 +9,10 @@ import com.sv.udb.clases.Ejercicio7;
 import com.sv.udb.clases.Notas;
 import java.awt.Color;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,10 +24,16 @@ public class frmEjerc7 extends javax.swing.JFrame {
     /**
      * Creates new form frmEjerc7
      */
+    Ejercicio7 objEjer;
+    List<Notas> Actual;
+    Notas modificar;
     public frmEjerc7() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.poblarData();
+        Actual = new ArrayList<>();
+        objEjer = new Ejercicio7();
+        this.Actual = this.objEjer.getData();
     }
     
     private void poblarData()
@@ -62,19 +71,13 @@ public class frmEjerc7 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTodo = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         txtTitu = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        lblFecha = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        txaCuerpo = new javax.swing.JTextArea();
+        btnGuardar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblTodo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,38 +96,42 @@ public class frmEjerc7 extends javax.swing.JFrame {
             }
         });
         tblTodo.setRowHeight(35);
+        tblTodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTodoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblTodo);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informacion de la fila"));
 
-        jLabel1.setText("Título:");
-
+        txtTitu.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        txtTitu.setBorder(null);
         txtTitu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Fecha:");
+        jScrollPane2.setBorder(null);
 
-        lblFecha.setText("Fecha");
+        txaCuerpo.setColumns(20);
+        txaCuerpo.setLineWrap(true);
+        txaCuerpo.setRows(5);
+        txaCuerpo.setBorder(null);
+        jScrollPane2.setViewportView(txaCuerpo);
 
-        jLabel3.setText("Cuerpo:");
+        btnGuardar.setBackground(new java.awt.Color(51, 51, 255));
+        btnGuardar.setText("Guardar");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        jButton1.setText("Cargar");
-
-        jButton2.setBackground(new java.awt.Color(51, 51, 255));
-        jButton2.setText("Guardar");
-
-        jButton3.setBackground(new java.awt.Color(51, 255, 51));
-        jButton3.setText("Modificar");
-
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setText("Eliminar");
+        btnModificar.setBackground(new java.awt.Color(51, 255, 51));
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,52 +140,30 @@ public class frmEjerc7 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnGuardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblFecha)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4)))
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(lblFecha))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
+                .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(btnGuardar)
+                    .addComponent(btnModificar))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,6 +187,27 @@ public class frmEjerc7 extends javax.swing.JFrame {
     private void txtTituActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTituActionPerformed
+
+    private void tblTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTodoMouseClicked
+        // TODO add your handling code here:
+        if (tblTodo.getSelectedRow() > -1){
+            Ejercicio7 ejer = new Ejercicio7();
+            this.modificar =  ejer.getData().get(tblTodo.getSelectedRow());
+            txtTitu.setText(this.modificar.getTitu());
+            txaCuerpo.setText(this.modificar.getDesc());
+        }
+    }//GEN-LAST:event_tblTodoMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        if (!txtTitu.getText().isEmpty() && !txaCuerpo.getText().isEmpty()) {
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un titutlo y descripcion");
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,19 +245,13 @@ public class frmEjerc7 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel lblFecha;
     private javax.swing.JTable tblTodo;
+    private javax.swing.JTextArea txaCuerpo;
     private javax.swing.JTextField txtTitu;
     // End of variables declaration//GEN-END:variables
 }

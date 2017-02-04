@@ -307,8 +307,6 @@ public class frmEjerc4 extends javax.swing.JFrame {
         }
         radios(this.cod.length());
         
-        
-        
     }
     private void btnN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnN1ActionPerformed
         // TODO add your handling code here:
