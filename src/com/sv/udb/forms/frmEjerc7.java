@@ -10,7 +10,9 @@ import com.sv.udb.clases.Notas;
 import java.awt.Color;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,18 +28,18 @@ public class frmEjerc7 extends javax.swing.JFrame {
      */
     Ejercicio7 objEjer;
     List<Notas> Actual;
-    Notas modificar;
     public frmEjerc7() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.poblarData();
-        Actual = new ArrayList<>();
-        objEjer = new Ejercicio7();
-        this.Actual = this.objEjer.getData();
+        
     }
     
     private void poblarData()
     {
+        Actual = new ArrayList<>();
+        objEjer = new Ejercicio7();
+        this.Actual = this.objEjer.getData();
         this.tblTodo.getTableHeader().setUI(null); //Quitar título de la columna
         //Cambiar color de selección
         this.tblTodo.setSelectionBackground(new Color(255, 255, 204));
@@ -192,18 +194,25 @@ public class frmEjerc7 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (tblTodo.getSelectedRow() > -1){
             Ejercicio7 ejer = new Ejercicio7();
-            this.modificar =  ejer.getData().get(tblTodo.getSelectedRow());
-            txtTitu.setText(this.modificar.getTitu());
-            txaCuerpo.setText(this.modificar.getDesc());
+            Notas fila =  ejer.getData().get(tblTodo.getSelectedRow());
+            txtTitu.setText(fila.getTitu());
+            txaCuerpo.setText(fila.getDesc());
         }
     }//GEN-LAST:event_tblTodoMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         if (!txtTitu.getText().isEmpty() && !txaCuerpo.getText().isEmpty()) {
-            
+            Actual.remove(tblTodo.getSelectedRow());
+            Calendar c1 = new GregorianCalendar();
+            String fecha = String.valueOf(c1.get(Calendar.DATE)) + "/" + String.valueOf(c1.get(Calendar.MONTH)) + "/" + String.valueOf(c1.get(Calendar.YEAR));
+            Notas modificar = new Notas(txtTitu.getText(),txaCuerpo.getText(), fecha);
+            Actual.add(tblTodo.getSelectedRow(), modificar);
+            Ejercicio7 obj = new Ejercicio7();
+            obj.Actualizar(Actual);
+            this.poblarData();
         }
-        else
+       else
         {
             JOptionPane.showMessageDialog(this, "Por favor ingrese un titutlo y descripcion");
         }

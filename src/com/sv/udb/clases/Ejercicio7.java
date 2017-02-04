@@ -5,11 +5,15 @@
  */
 package com.sv.udb.clases;
 
+import com.csvreader.CsvWriter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author bernardo
@@ -42,5 +46,34 @@ public class Ejercicio7 {
         }
     return resp;
     }
+    
+    public void Actualizar(List<Notas> Nuevo){
+        
+        String outputFile = "com/sv/udb/files/datos.csv";
+        boolean alreadyExists = new File(outputFile).exists();
+         
+        if(alreadyExists){
+            File ArchivoEmpleados = new File(outputFile);
+            ArchivoEmpleados.delete();
+        }
+        
+        try {  
+            CsvWriter csvOutput = new CsvWriter(new FileWriter(outputFile, true), ',');             
+            for(Notas temp : Nuevo){
+                 
+                csvOutput.write(temp.getTitu());
+                csvOutput.write(temp.getFech());
+                csvOutput.write(temp.getDesc());
+                csvOutput.endRecord();                   
+            }
+             
+            csvOutput.close();
+         
+        } catch (IOException e) {
+            e.getMessage();
+            e.printStackTrace();
+        }
+    }
+    
     
 }
