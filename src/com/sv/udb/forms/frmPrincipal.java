@@ -62,18 +62,38 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(btnEjerc2);
 
         btnEjerc3.setText("Ejercicio 3");
+        btnEjerc3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEjerc3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(btnEjerc3);
 
         btnEjerc4.setText("Ejercicio 4");
+        btnEjerc4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEjerc4MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(btnEjerc4);
 
         btnEjerc5.setText("Ejercicio 5");
+        btnEjerc5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEjerc5MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(btnEjerc5);
 
         btnEjerc6.setText("Ejercicio 6");
         jMenuBar1.add(btnEjerc6);
 
         btnEjerc7.setText("Ejercicio 7");
+        btnEjerc7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEjerc7MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(btnEjerc7);
 
         setJMenuBar(jMenuBar1);
@@ -117,6 +137,46 @@ public class frmPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnEjerc2MouseClicked
+
+    private void btnEjerc4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEjerc4MouseClicked
+        // TODO add your handling code here:
+        try {
+            frmEjerc4 frmEj4 = new frmEjerc4();
+            frmEj4.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEjerc4MouseClicked
+
+    private void btnEjerc5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEjerc5MouseClicked
+        // TODO add your handling code here:
+        try {
+            frmEjerc5 frmEj5 = new frmEjerc5();
+            frmEj5.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEjerc5MouseClicked
+
+    private void btnEjerc3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEjerc3MouseClicked
+        // TODO add your handling code here:
+        try {
+            frmEjerc3 frmEj3 = new frmEjerc3();
+            frmEj3.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEjerc3MouseClicked
+
+    private void btnEjerc7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEjerc7MouseClicked
+        // TODO add your handling code here:
+        try {
+            frmEjerc7 frmEj7 = new frmEjerc7();
+            frmEj7.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEjerc7MouseClicked
 
     /**
      * @param args the command line arguments

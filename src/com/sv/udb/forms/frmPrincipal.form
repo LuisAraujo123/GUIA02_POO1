@@ -25,16 +25,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ejercicio 3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEjerc3MouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="btnEjerc4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ejercicio 4"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEjerc4MouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="btnEjerc5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ejercicio 5"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEjerc5MouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="btnEjerc6">
           <Properties>
@@ -45,6 +54,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ejercicio 7"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEjerc7MouseClicked"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>
