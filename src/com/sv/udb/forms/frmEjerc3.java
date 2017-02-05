@@ -55,6 +55,8 @@ public class frmEjerc3 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Parte 2"));
 
         lbl0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -158,9 +160,9 @@ public class frmEjerc3 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblParte1.setGridColor(new java.awt.Color(255, 255, 255));
         tblParte1.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tblParte1.setRowHeight(50);
-        tblParte1.setRowMargin(0);
         tblParte1.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(tblParte1);
 
@@ -180,6 +182,7 @@ public class frmEjerc3 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnGen1.setBackground(new java.awt.Color(0, 204, 204));
         btnGen1.setText("Generar");
         btnGen1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +190,7 @@ public class frmEjerc3 extends javax.swing.JFrame {
             }
         });
 
+        btnGen2.setBackground(new java.awt.Color(0, 204, 204));
         btnGen2.setText("Generar");
         btnGen2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

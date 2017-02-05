@@ -54,7 +54,11 @@ public class frmEjerc4 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
+
+        btnN1.setBackground(new java.awt.Color(153, 0, 204));
         btnN1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN1.setForeground(new java.awt.Color(255, 255, 255));
         btnN1.setText("1");
         btnN1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +66,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN2.setBackground(new java.awt.Color(153, 0, 204));
         btnN2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN2.setForeground(new java.awt.Color(255, 255, 255));
         btnN2.setText("2");
         btnN2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +76,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN3.setBackground(new java.awt.Color(153, 0, 204));
         btnN3.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN3.setForeground(new java.awt.Color(255, 255, 255));
         btnN3.setText("3");
         btnN3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +86,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN4.setBackground(new java.awt.Color(153, 0, 204));
         btnN4.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN4.setForeground(new java.awt.Color(255, 255, 255));
         btnN4.setText("4");
         btnN4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +96,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN5.setBackground(new java.awt.Color(153, 0, 204));
         btnN5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN5.setForeground(new java.awt.Color(255, 255, 255));
         btnN5.setText("5");
         btnN5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +106,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN6.setBackground(new java.awt.Color(153, 0, 204));
         btnN6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN6.setForeground(new java.awt.Color(255, 255, 255));
         btnN6.setText("6");
         btnN6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +116,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN7.setBackground(new java.awt.Color(153, 0, 204));
         btnN7.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN7.setForeground(new java.awt.Color(255, 255, 255));
         btnN7.setText("7");
         btnN7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +126,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN8.setBackground(new java.awt.Color(153, 0, 204));
         btnN8.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN8.setForeground(new java.awt.Color(255, 255, 255));
         btnN8.setText("8");
         btnN8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +136,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN9.setBackground(new java.awt.Color(153, 0, 204));
         btnN9.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN9.setForeground(new java.awt.Color(255, 255, 255));
         btnN9.setText("9");
         btnN9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +146,9 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        btnN0.setBackground(new java.awt.Color(153, 0, 204));
         btnN0.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnN0.setForeground(new java.awt.Color(255, 255, 255));
         btnN0.setText("0");
         btnN0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +156,7 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        rdPin1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rdPin1.setEnabled(false);
         rdPin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +164,7 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        rdPin2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rdPin2.setEnabled(false);
         rdPin2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +172,7 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        rdPin3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rdPin3.setEnabled(false);
         rdPin3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +180,7 @@ public class frmEjerc4 extends javax.swing.JFrame {
             }
         });
 
+        rdPin4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rdPin4.setEnabled(false);
         rdPin4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

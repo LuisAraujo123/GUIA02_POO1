@@ -86,6 +86,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(btnEjerc5);
 
         btnEjerc6.setText("Ejercicio 6");
+        btnEjerc6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEjerc6MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(btnEjerc6);
 
         btnEjerc7.setText("Ejercicio 7");
@@ -177,6 +182,16 @@ public class frmPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnEjerc7MouseClicked
+
+    private void btnEjerc6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEjerc6MouseClicked
+        // TODO add your handling code here:
+        try {
+            frmEjerc6 frmEj6 = new frmEjerc6();
+            frmEj6.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEjerc6MouseClicked
 
     /**
      * @param args the command line arguments

@@ -26,7 +26,7 @@ public class frmEjerc7 extends javax.swing.JFrame {
     /**
      * Creates new form frmEjerc7
      */
-    Ejercicio7 objEjer;
+    
     List<Notas> Actual;
     public frmEjerc7() {
         initComponents();
@@ -37,21 +37,19 @@ public class frmEjerc7 extends javax.swing.JFrame {
     
     private void poblarData()
     {
-        Actual = new ArrayList<>();
-        objEjer = new Ejercicio7();
-        this.Actual = this.objEjer.getData();
+        
         this.tblTodo.getTableHeader().setUI(null); //Quitar título de la columna
         //Cambiar color de selección
         this.tblTodo.setSelectionBackground(new Color(255, 255, 204));
         this.tblTodo.setSelectionForeground(Color.BLACK);
         
-        
         DefaultTableModel model = (DefaultTableModel)this.tblTodo.getModel();
         while(model.getRowCount()>0){model.removeRow(0);} //Limpiar modelo
-        
-        
+
         //Obtenes y cargar la data CSV
         Ejercicio7 obje = new Ejercicio7();
+        Actual = new ArrayList<>();
+        this.Actual = obje.getData();
         for(Notas temp : obje.getData())
         {
             String text = String.format("<html><div style='display:table'><div><div><strong> %s</strong> "
@@ -60,6 +58,19 @@ public class frmEjerc7 extends javax.swing.JFrame {
             model.addRow(new Object[]{text, temp.getFech()});
         }
     }
+    
+    private void rechargue() {
+        DefaultTableModel model = (DefaultTableModel)this.tblTodo.getModel();
+        while(model.getRowCount()>0){model.removeRow(0);}
+        for(Notas temp : Actual)
+        {
+            String text = String.format("<html><div style='display:table'><div><div><strong> %s</strong> "
+                + "</div></div><div style='color:gray'>%s</div></div></html>", 
+                    temp.getTitu(), temp.getDesc());
+            model.addRow(new Object[]{text, temp.getFech()});
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,6 +89,9 @@ public class frmEjerc7 extends javax.swing.JFrame {
         txaCuerpo = new javax.swing.JTextArea();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -125,7 +139,13 @@ public class frmEjerc7 extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txaCuerpo);
 
         btnGuardar.setBackground(new java.awt.Color(51, 51, 255));
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setBackground(new java.awt.Color(51, 255, 51));
         btnModificar.setText("Modificar");
@@ -135,37 +155,74 @@ public class frmEjerc7 extends javax.swing.JFrame {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(255, 51, 51));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setBackground(new java.awt.Color(255, 153, 0));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpiar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(btnGuardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnModificar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 75, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLimpiar)))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
-                    .addComponent(btnModificar))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(btnModificar)
+                    .addComponent(btnEliminar))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,31 +249,95 @@ public class frmEjerc7 extends javax.swing.JFrame {
 
     private void tblTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTodoMouseClicked
         // TODO add your handling code here:
-        if (tblTodo.getSelectedRow() > -1){
+        try {
+            if (tblTodo.getSelectedRow() > -1){
             Ejercicio7 ejer = new Ejercicio7();
             Notas fila =  ejer.getData().get(tblTodo.getSelectedRow());
             txtTitu.setText(fila.getTitu());
             txaCuerpo.setText(fila.getDesc());
         }
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, "Intentelo de nuevo");
+        }
+        
     }//GEN-LAST:event_tblTodoMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         if (!txtTitu.getText().isEmpty() && !txaCuerpo.getText().isEmpty()) {
             Actual.remove(tblTodo.getSelectedRow());
-            Calendar c1 = new GregorianCalendar();
-            String fecha = String.valueOf(c1.get(Calendar.DATE)) + "/" + String.valueOf(c1.get(Calendar.MONTH)) + "/" + String.valueOf(c1.get(Calendar.YEAR));
+            String fecha = fechaSist();
             Notas modificar = new Notas(txtTitu.getText(),txaCuerpo.getText(), fecha);
             Actual.add(tblTodo.getSelectedRow(), modificar);
             Ejercicio7 obj = new Ejercicio7();
             obj.Actualizar(Actual);
-            this.poblarData();
+            txtTitu.setText("");
+            txaCuerpo.setText("");
+            this.rechargue();
         }
        else
         {
             JOptionPane.showMessageDialog(this, "Por favor ingrese un titutlo y descripcion");
         }
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private String fechaSist() {
+        Calendar c1 = new GregorianCalendar();
+        String dia, mes, anio;
+        dia = String.valueOf(c1.get(Calendar.DATE));
+        mes =  String.valueOf(c1.get(Calendar.MONTH));
+        anio = String.valueOf(c1.get(Calendar.YEAR));
+        if (dia.length() == 1){
+            dia = "0"+dia;
+        }
+        if (mes.length() == 1){
+            mes = "0"+mes;
+        }
+            String fecha = dia + "/" + mes + "/" + anio;
+            return fecha;
+    }
+    
+    
+    
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        if (!txtTitu.getText().isEmpty() && !txaCuerpo.getText().isEmpty()) {
+            String fecha = fechaSist();
+            Notas Agregar = new Notas(txtTitu.getText(),txaCuerpo.getText(), fecha);
+            Actual.add(Agregar);
+            Ejercicio7 obj = new Ejercicio7();
+            obj.Actualizar(Actual);
+            txtTitu.setText("");
+            txaCuerpo.setText("");            
+            this.rechargue();
+        }
+       else
+        {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un titutlo y descripcion");
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(this, "Esta seguro de eliminar este archivo?") == JOptionPane.OK_OPTION) {
+            if (this.tblTodo.getSelectedRow() > -1) {
+                Actual.remove(tblTodo.getSelectedRow());
+                Ejercicio7 obj = new Ejercicio7();
+                obj.Actualizar(Actual);
+                txtTitu.setText("");
+                txaCuerpo.setText("");
+                this.rechargue();
+            }
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        txtTitu.setText("");
+        txaCuerpo.setText("");
+        this.rechargue();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,11 +375,14 @@ public class frmEjerc7 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tblTodo;
     private javax.swing.JTextArea txaCuerpo;
     private javax.swing.JTextField txtTitu;

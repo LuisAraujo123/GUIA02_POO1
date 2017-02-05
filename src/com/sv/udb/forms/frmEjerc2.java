@@ -43,10 +43,10 @@ public class frmEjerc2 extends javax.swing.JFrame {
         txtIngreso = new javax.swing.JTextField();
         lblIngrese = new javax.swing.JLabel();
         btnLimp = new javax.swing.JButton();
-        btnCalc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese los números"));
 
         txtIngreso.addActionListener(new java.awt.event.ActionListener() {
@@ -63,17 +63,11 @@ public class frmEjerc2 extends javax.swing.JFrame {
         lblIngrese.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         lblIngrese.setText("Ingrese la cantidad:");
 
+        btnLimp.setBackground(new java.awt.Color(153, 153, 153));
         btnLimp.setText("Limpiar");
         btnLimp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpActionPerformed(evt);
-            }
-        });
-
-        btnCalc.setText("Calcular");
-        btnCalc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalcActionPerformed(evt);
             }
         });
 
@@ -89,11 +83,8 @@ public class frmEjerc2 extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCalc)
-                                .addGap(49, 49, 49)
-                                .addComponent(btnLimp))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnLimp)
                             .addComponent(txtIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(27, Short.MAX_VALUE))))
         );
@@ -104,11 +95,9 @@ public class frmEjerc2 extends javax.swing.JFrame {
                 .addComponent(lblIngrese)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCalc)
-                    .addComponent(btnLimp))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(btnLimp)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,10 +118,6 @@ public class frmEjerc2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLimpActionPerformed
 
     private void txtIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresoActionPerformed
         // TODO add your handling code here:
@@ -186,9 +171,10 @@ public class frmEjerc2 extends javax.swing.JFrame {
         this.listEjer.clear();        
     }
     
-    private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
+    private void btnLimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCalcActionPerformed
+        Limpiar();
+    }//GEN-LAST:event_btnLimpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,7 +212,6 @@ public class frmEjerc2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCalc;
     private javax.swing.JButton btnLimp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblIngrese;

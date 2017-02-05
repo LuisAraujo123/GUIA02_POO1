@@ -5,6 +5,14 @@
  */
 package com.sv.udb.forms;
 
+import com.sv.udb.clases.Ejercicio6;
+import com.sv.udb.clases.Notas;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bernardo
@@ -17,6 +25,17 @@ public class frmEjerc6 extends javax.swing.JFrame {
     public frmEjerc6() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.poblarData();
+    }
+    
+    private void poblarData()
+    {
+        List<Notas> list = new ArrayList<>();
+        Ejercicio6 linea = new Ejercicio6();
+        list = linea.getData();
+        txtTitu.setText(list.get(0).getTitu());
+        lblFecha.setText(list.get(0).getFech());
+        txaCuerpo.setText(list.get(0).getDesc());
     }
 
     /**
@@ -29,20 +48,73 @@ public class frmEjerc6 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        txtTitu = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaCuerpo = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        lblFecha = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Editor / Lector CSV"));
+
+        txtTitu.setBackground(new java.awt.Color(204, 204, 204));
+        txtTitu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtTitu.setBorder(javax.swing.BorderFactory.createTitledBorder("Titulo"));
+
+        jScrollPane1.setBorder(null);
+
+        txaCuerpo.setBackground(new java.awt.Color(204, 204, 204));
+        txaCuerpo.setColumns(20);
+        txaCuerpo.setRows(5);
+        txaCuerpo.setBorder(javax.swing.BorderFactory.createTitledBorder("Cuerpo"));
+        jScrollPane1.setViewportView(txaCuerpo);
+
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        lblFecha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblFecha.setText("Fecha");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 368, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(lblFecha)
+                        .addGap(0, 65, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(141, 141, 141))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 255, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(txtTitu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblFecha)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -58,12 +130,43 @@ public class frmEjerc6 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private String fechaSist() {
+        Calendar c1 = new GregorianCalendar();
+        String dia, mes, anio;
+        dia = String.valueOf(c1.get(Calendar.DATE));
+        mes =  String.valueOf(c1.get(Calendar.MONTH));
+        anio = String.valueOf(c1.get(Calendar.YEAR));
+        if (dia.length() == 1){
+            dia = "0"+dia;
+        }
+        if (mes.length() == 1){
+            mes = "0"+mes;
+        }
+            String fecha = dia + "/" + mes + "/" + anio;
+            return fecha;
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        List<Notas> nuevo = new ArrayList<>();
+        Notas agregar = new Notas();
+        agregar.setTitu(txtTitu.getText());
+        agregar.setDesc(txaCuerpo.getText());
+        String fecha = fechaSist();
+        agregar.setFech(fecha);
+        lblFecha.setText(fecha);
+        nuevo.add(agregar);
+        Ejercicio6 obj = new Ejercicio6();
+        obj.Actualizar(nuevo);
+        JOptionPane.showMessageDialog(this, "Datos actualizados! \nRevisar archivo.csv");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,6 +204,11 @@ public class frmEjerc6 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JTextArea txaCuerpo;
+    private javax.swing.JTextField txtTitu;
     // End of variables declaration//GEN-END:variables
 }

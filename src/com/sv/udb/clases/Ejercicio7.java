@@ -49,7 +49,7 @@ public class Ejercicio7 {
     
     public void Actualizar(List<Notas> Nuevo){
         
-        String outputFile = "com/sv/udb/files/datos.csv";
+        String outputFile = "src\\com\\sv\\udb\\files\\datos.csv";
         boolean alreadyExists = new File(outputFile).exists();
          
         if(alreadyExists){
@@ -58,15 +58,15 @@ public class Ejercicio7 {
         }
         
         try {  
-            CsvWriter csvOutput = new CsvWriter(new FileWriter(outputFile, true), ',');             
+            CsvWriter csvOutput = new CsvWriter(new FileWriter(outputFile, true), ',');
             for(Notas temp : Nuevo){
                  
                 csvOutput.write(temp.getTitu());
-                csvOutput.write(temp.getFech());
                 csvOutput.write(temp.getDesc());
+                csvOutput.write(temp.getFech());
                 csvOutput.endRecord();                   
             }
-             
+            
             csvOutput.close();
          
         } catch (IOException e) {
